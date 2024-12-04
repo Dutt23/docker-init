@@ -6,7 +6,9 @@ COPY package.json /app/
 
 RUN npm i
 
-COPY . .
+# If using bind mounts absolute_pathname/:app:ro
+# You don't need to copy
+# COPY . .
 
 EXPOSE 80
 
