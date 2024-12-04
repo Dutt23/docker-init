@@ -10,7 +10,9 @@ RUN npm i
 # You don't need to copy
 # COPY . .
 
-EXPOSE 80
+ENV PORT=80
+
+EXPOSE $PORT
 
 # VOLUME ["/app/node_modules"]
 
