@@ -1,4 +1,12 @@
-docker run --network multi-network --name multi-mongo -d --rm -v multi-data:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo
+docker run 
+--network multi-network 
+--name multi-mongo 
+-d 
+--rm 
+-v multi-data:/data/db
+ -e MONGO_INITDB_ROOT_USERNAME=admin 
+ -e MONGO_INITDB_ROOT_PASSWORD=admin 
+ mongo
 
 
 docker run --name multi-node --rm --network multi-network -p 80:80 -v logs:/app/logs -v $(pwd):/app -v /app/node_modules -d multi:node
