@@ -1,11 +1,26 @@
 # For docker compose all services are run in the same network
+# use the service names for api requests
 version: '3.8'
 services:
-  # backend:
-    
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
   # frontend:
     
   mongodb:
+    container_name: mongodb
     image: 'mongo'
     volumes:
       - data:/data/db
@@ -16,3 +31,4 @@ services:
       - ./env/mongo.env
 volumes:
   data:
+  logs:
