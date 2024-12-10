@@ -1,0 +1,1 @@
+docker run --network multi-network --name multi-mongo -d --rm -v multi-data:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo
