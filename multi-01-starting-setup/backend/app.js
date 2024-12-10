@@ -75,7 +75,7 @@ app.delete('/goals/:id', async (req, res) => {
   try {
     await Goal.deleteOne({ _id: req.params.id });
     res.status(200).json({ message: 'Deleted goal!' });
-    console.log('DELETED GOAL');
+    console.log('DELETED');
   } catch (err) {
     console.error('ERROR FETCHING GOALS');
     console.error(err.message);
@@ -84,7 +84,7 @@ app.delete('/goals/:id', async (req, res) => {
 });
 
 mongoose.connect(
-  'mongodb://admin:admin@multi-mongo:27017/course-goals?authSource=admin',
+  `mongodb://${process.env.MONGO_DB_USER_NAME}:${process.env.MONGO_DB_PASSWORD}@multi-mongo:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

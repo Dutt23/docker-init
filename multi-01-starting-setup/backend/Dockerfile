@@ -10,4 +10,6 @@ COPY . /app
 
 EXPOSE 80
 
-CMD ["node", "app.js"]
+ENV MONGO_DB_USER_NAME=admin
+ENV MONGO_DB_PASSWORD=admin
+CMD ["npm", "start"]
