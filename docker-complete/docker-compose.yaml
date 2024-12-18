@@ -2,22 +2,27 @@ version: '3.8'
 
 services:
   server:
-    image: 'nginx:stable-alpine'
+    # image: 'nginx:stable-alpine'
+    build: 
+    # cintext sets the directory where docker file is built.
+    # if folders aren't present it's an issue
+      context: .
+      dockerfile: dockerfiles/nginx.dockerfile
     ports:
       - '8000:80'
     volumes:
     # pass own nginx conf
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./src:/var/www/html
+      # - ./src:/var/www/html
     depends_on:
       - php
       - mysql
   php:
     build: 
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
-    volumes:
-      - ./src:/var/www/html:delegated
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
+    # volumes:
+    #   - ./src:/var/www/html:delegated
     ports:
       - '3000:9000'
   mysql:
