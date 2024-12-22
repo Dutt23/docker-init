@@ -43,6 +43,7 @@ services:
     volumes:
       - ./src:/var/www/html
     entrypoint: ["php", "/var/www/html/artisan"]
+    command: ["migrate"]
   npm:
     image: node:14
     working_dir: /var/www/html
