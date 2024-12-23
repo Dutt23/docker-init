@@ -3,7 +3,14 @@ kind: Deployment
 metadata:
   name: second-app-deployment
 spec:
-  selector:
-    
+  replicas: 3
   template:
+    metadata:
+      labels:
+        app: second-app
+    spec:
+      containers:
+        - name: second-node
+          image: kub-first-app:latest
+          imagePullPolicy: Never
     
