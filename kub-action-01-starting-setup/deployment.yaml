@@ -3,11 +3,20 @@ kind: Deployment
 metadata:
   name: second-app-deployment
 spec:
+# Deployments are dynamic.
+# Currently it's clear this deployment is with this pod.
+# But later when more pods are scaled up or down. The deployment needs to know which ones to manage
+# hence labels and selectors
+  selector:
+    matchLabels:
+      app: second-app
+      tier: backend
   replicas: 3
   template:
     metadata:
       labels:
         app: second-app
+        tier: backend
     spec:
       containers:
         - name: second-node
