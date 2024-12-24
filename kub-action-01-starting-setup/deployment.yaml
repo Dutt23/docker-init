@@ -20,6 +20,12 @@ spec:
     spec:
       containers:
         - name: second-node
-          image: kub-first-app:latest
-          imagePullPolicy: Never
+          image: dutt234/first-kube-app
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
+          # imagePullPolicy: Never
     
