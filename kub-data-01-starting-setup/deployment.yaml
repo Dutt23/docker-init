@@ -16,3 +16,9 @@ spec:
         - name: story
           image: kub-data-demo
           imagePullPolicy: 'Never'
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+      volumes:
+        - name: story-volume
+          emptyDir: {}
