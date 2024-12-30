@@ -17,7 +17,11 @@ spec:
           image: kub-data-demo
           env:
             - name: STORY_FOLDER
-              value: 'story'
+              # value: 'story'
+              valueFrom:
+                configMapKeyRef:
+                  key: folder
+                  name: data-store-env
           imagePullPolicy: 'Never'
           volumeMounts:
             - mountPath: /app/story
